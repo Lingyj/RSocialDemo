@@ -32,7 +32,7 @@ NSString * const kRSocialTencentWeiboAuthAccessTokenLink = @"https://open.t.qq.c
 
 - (NSDictionary *)webViewAuthRequestDictionary
 {
-    NSMutableDictionary *webViewAuthRequestDictionary = [NSMutableDictionary dictionaryWithDictionary:super.webViewAuthRequestDictionary];
+    NSMutableDictionary *webViewAuthRequestDictionary = [super.webViewAuthRequestDictionary.mutableCopy autorelease];
     NSString *state = @(arc4random()).stringValue;
     [self.authStates setValue:state forKey:kRSocialTencentWeiboStateKeyWebView];
     [webViewAuthRequestDictionary setValue:state forKey:@"state"];
@@ -41,7 +41,7 @@ NSString * const kRSocialTencentWeiboAuthAccessTokenLink = @"https://open.t.qq.c
 
 - (NSDictionary *)codeAuthRequestDictionary
 {
-    NSMutableDictionary *codeAuthRequestDictionary = [NSMutableDictionary dictionaryWithDictionary:super.codeAuthRequestDictionary];
+    NSMutableDictionary *codeAuthRequestDictionary = [super.codeAuthRequestDictionary.mutableCopy autorelease];
     NSString *state = @(arc4random()).stringValue;
     [self.authStates setValue:state forKey:kRSocialTencentWeiboStateKeyCode];
     [codeAuthRequestDictionary setValue:state forKey:@"state"];
@@ -50,7 +50,7 @@ NSString * const kRSocialTencentWeiboAuthAccessTokenLink = @"https://open.t.qq.c
 
 - (NSDictionary *)refreshTokenAuthRequestDictionary
 {
-    NSMutableDictionary *refreshTokenAuthRequestDictionary = [NSMutableDictionary dictionaryWithDictionary:super.refreshTokenAuthRequestDictionary];
+    NSMutableDictionary *refreshTokenAuthRequestDictionary = [super.refreshTokenAuthRequestDictionary.mutableCopy autorelease];
     NSString *state = @(arc4random()).stringValue;
     [self.authStates setValue:state forKey:kRSocialTencentWeiboStateKeyRefreshToken];
     [refreshTokenAuthRequestDictionary setValue:state forKey:@"state"];

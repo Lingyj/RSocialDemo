@@ -32,7 +32,7 @@ NSString * const kRSocialTencentQQAuthAccessTokenLink = @"https://graph.qq.com/o
 
 - (NSDictionary *)webViewAuthRequestDictionary
 {
-    NSMutableDictionary *webViewAuthRequestDictionary = [NSMutableDictionary dictionaryWithDictionary:super.webViewAuthRequestDictionary];
+    NSMutableDictionary *webViewAuthRequestDictionary = [super.webViewAuthRequestDictionary.mutableCopy autorelease];
     NSString *state = @(arc4random()).stringValue;
     [self.authStates setValue:state forKey:kRSocialTencentQQStateKeyWebView];
     [webViewAuthRequestDictionary setValue:state forKey:@"state"];
