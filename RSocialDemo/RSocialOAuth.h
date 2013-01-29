@@ -40,6 +40,10 @@
 @property (nonatomic, strong) NSDate *accessTokenTimeout;
 @property (nonatomic, strong) NSDate *refreshTokenTimeout;
 
+#pragma mark - Life cycle
+
++ (id)sharedAuth;
+
 // Override this method in subclass.
 - (void)configure;
 

@@ -46,7 +46,7 @@
     progressHUD.labelText = NSLocalizedString(@"Checking...", nil);
     [progressHUD show:YES];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [self.tencentQQAuth checkAuthorizationUpdate];
+        [self.sinaWeiboAuth checkAuthorizationUpdate];
         dispatch_async(dispatch_get_main_queue(), ^{
             [progressHUD hide:YES];
             [self updateStatusLabels];
@@ -59,7 +59,7 @@
     MBProgressHUD *progressHUD = self.progressHUD;
     progressHUD.labelText = NSLocalizedString(@"Logging in...", nil);
     [progressHUD show:YES];
-    [self.tencentQQAuth authorizeWithCompletionHandler:^(BOOL success) {
+    [self.sinaWeiboAuth authorizeWithCompletionHandler:^(BOOL success) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [progressHUD hide:YES];
             [self updateStatusLabels];
@@ -69,7 +69,7 @@
 
 - (void)logoutButtonPressed:(UIButton *)button
 {
-    [self.tencentQQAuth logout];
+    [self.sinaWeiboAuth logout];
     [self updateStatusLabels];
 }
 
@@ -78,7 +78,7 @@
 - (void)updateStatusLabels
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        RSocialOAuth *auth = self.tencentQQAuth;
+        RSocialOAuth *auth = self.sinaWeiboAuth;
         self.statusLabel.text = auth.isAuthorized ? NSLocalizedString(@"Authed", nil) : NSLocalizedString(@"Not Authed", nil);
         self.accessTokenLabel.text = auth.accessToken;
         self.accessTokenTimeoutLabel.text = auth.accessTokenTimeout.description;
@@ -98,20 +98,11 @@
     self.progressHUD = progressHUD;
     [self.view addSubview:progressHUD];
     
-    RSocialDoubanAuth *doubanAuth = [[[RSocialDoubanAuth alloc] init] autorelease];
-    self.doubanAuth = doubanAuth;
-    
-    RSocialSinaWeiboAuth *sinaWeiboAuth = [[[RSocialSinaWeiboAuth alloc] init] autorelease];
-    self.sinaWeiboAuth = sinaWeiboAuth;
-    
-    RSocialRenrenAuth *renrenAuth = [[[RSocialRenrenAuth alloc] init] autorelease];
-    self.renrenAuth = renrenAuth;
-    
-    RSocialTencentWeiboAuth *tencentWeiboAuth = [[[RSocialTencentWeiboAuth alloc] init] autorelease];
-    self.tencentWeiboAuth = tencentWeiboAuth;
-    
-    RSocialTencentQQAuth *tencentQQAuth = [[[RSocialTencentQQAuth alloc] init] autorelease];
-    self.tencentQQAuth = tencentQQAuth;
+    self.doubanAuth = [RSocialDoubanAuth sharedAuth];
+    self.sinaWeiboAuth = [RSocialSinaWeiboAuth sharedAuth];
+    self.renrenAuth = [RSocialRenrenAuth sharedAuth];
+    self.tencentWeiboAuth = [RSocialTencentWeiboAuth sharedAuth];
+    self.tencentQQAuth = [RSocialTencentQQAuth sharedAuth];
 }
 
 - (void)viewDidAppear:(BOOL)animated

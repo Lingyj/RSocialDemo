@@ -239,6 +239,16 @@ NSTimeInterval const kRSocialOAuthTimeoutOffset = 300; // 5 min
 
 #pragma mark - Life cycle
 
++ (id)sharedAuth
+{
+    static RSocialOAuth *sharedAuth = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedAuth = [[self alloc] init];
+    });
+    return sharedAuth;
+}
+
 - (void)configure
 {
     NSAssert(0, @"RSocialOAuth: Method not implemented.");
