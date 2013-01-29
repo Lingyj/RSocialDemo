@@ -22,6 +22,19 @@ NSString * const kRSocialSinaWeiboAuthAccessTokenLink = @"https://api.weibo.com/
 
 @implementation RSocialSinaWeiboAuth
 
+#pragma mark - Auth flow
+
+- (NSDictionary *)webViewAuthRequestDictionary
+{
+    NSMutableDictionary *webViewAuthRequestDictionary = [super.webViewAuthRequestDictionary.mutableCopy autorelease];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        [webViewAuthRequestDictionary setValue:@"mobile" forKey:@"display"];
+    } else {
+        [webViewAuthRequestDictionary setValue:@"default" forKey:@"display"];
+    }
+    return webViewAuthRequestDictionary;
+}
+
 #pragma mark - Getters and setters
 
 #warning ATTENTION!!!
