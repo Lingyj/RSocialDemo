@@ -1,6 +1,4 @@
-# RSocialDemo
-
-Demo project of RSocial.
+# RSocialDemo Demo project of RSocial.
 
 ## Progress
 
@@ -29,6 +27,8 @@ The original author, Alex Rezit, reserves the right to change the license.
 
 You can support me in various ways: Cash donation, purchasing items on Amazon Wishlists, or just improve my code and send a pull request.  
 您可以通过多种方式支持我: 捐赠, 为我购买亚马逊心愿单上的物品, 或尽您所能改善我的代码并提交 pull request.
+
+[Donors List | 捐赠者名单](https://github.com/AlexRezit/RSocialDemo/blob/master/DONORS.md)
 
 Via:
 * [Alipay | 支付宝](https://me.alipay.com/alexrezit)
