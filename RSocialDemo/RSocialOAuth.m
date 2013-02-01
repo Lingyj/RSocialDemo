@@ -89,6 +89,11 @@ NSTimeInterval const kRSocialOAuthTimeoutOffset = 300; // 5 min
     });
 }
 
+- (void)deactivateAccessToken
+{
+    self.accessTokenTimeout = [NSDate dateWithTimeIntervalSinceNow:-1];
+}
+
 - (void)logout
 {
     self.code = nil;

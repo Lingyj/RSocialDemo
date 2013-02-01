@@ -58,6 +58,9 @@
 // Try authorize using standard auth flow.
 - (void)authorizeWithCompletionHandler:(void (^)(BOOL success))completion;
 
+// Call this method to deactivate access token manually if it is somehow invalid.
+- (void)deactivateAccessToken;
+
 // Clears all the information stored.
 - (void)logout;
 
