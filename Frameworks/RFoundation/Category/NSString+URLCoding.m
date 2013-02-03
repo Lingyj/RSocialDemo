@@ -37,9 +37,15 @@
         } else if ([obj isKindOfClass:[NSArray class]] ||
                    [obj isKindOfClass:[NSSet class]] ||
                    [obj isKindOfClass:[NSOrderedSet class]]) {
-            NSMutableArray *objComponents = [NSMutableArray arrayWithCapacity:components.count];
+            NSMutableArray *objComponents = [NSMutableArray arrayWithCapacity:[obj count]];
             for (id objComponent in obj) {
-                [objComponents addObject:[objComponent URLEncodedString]];
+                NSString *objComponentString = nil;
+                if ([objComponent isKindOfClass:[NSString class]]) {
+                    objComponentString = [objComponent URLEncodedString];
+                } else if ([objComponent isKindOfClass:[NSNumber class]]) {
+                    objComponentString = [objComponent stringValue];
+                }
+                [objComponents addObject:objComponentString];
             }
             objString = [objComponents componentsJoinedByString:@","];
         }
