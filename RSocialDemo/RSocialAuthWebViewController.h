@@ -16,7 +16,7 @@
 
 - (void)authWebViewControllerDidDismiss:(RSocialAuthWebViewController *)viewController;
 
-- (void)authWebViewController:(RSocialAuthWebViewController *)viewController didSuccessWithResponseDictionary:(NSDictionary *)responseDictionary;
+- (void)authWebViewController:(RSocialAuthWebViewController *)viewController didSucceedWithResponseDictionary:(NSDictionary *)responseDictionary;
 - (void)authWebViewControllerDidCancel:(RSocialAuthWebViewController *)viewController;
 //- (void)authWebViewController:(RSocialAuthWebViewController *)viewController didFailWithError:(NSError *)error;
 

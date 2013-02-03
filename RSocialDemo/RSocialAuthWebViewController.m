@@ -218,8 +218,8 @@
             NSDictionary *responseDictionary = [request.URL.query URLDecodedDictionary];
             shouldLoad = NO;
             dispatch_async(dispatch_get_main_queue(), ^{
-                if ([self.delegate respondsToSelector:@selector(authWebViewController:didSuccessWithResponseDictionary:)]) {
-                    [self.delegate authWebViewController:self didSuccessWithResponseDictionary:responseDictionary];
+                if ([self.delegate respondsToSelector:@selector(authWebViewController:didSucceedWithResponseDictionary:)]) {
+                    [self.delegate authWebViewController:self didSucceedWithResponseDictionary:responseDictionary];
                 }
                 [self performSelector:@selector(dismiss) withObject:nil afterDelay:0.1f];
             });

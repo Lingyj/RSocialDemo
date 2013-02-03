@@ -275,7 +275,7 @@ NSTimeInterval const kRSocialOAuthTimeoutOffset = 300; // 5 min
     dispatch_semaphore_signal(self.isAuthorizingViaWebViewSem);
 }
 
-- (void)authWebViewController:(RSocialAuthWebViewController *)viewController didSuccessWithResponseDictionary:(NSDictionary *)responseDictionary
+- (void)authWebViewController:(RSocialAuthWebViewController *)viewController didSucceedWithResponseDictionary:(NSDictionary *)responseDictionary
 {
     [self handleWebViewAuthResponse:responseDictionary];
 }
