@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		FA1F77B916B39AB3001510AF /* RSocialTencentQQAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1F77B816B39AB3001510AF /* RSocialTencentQQAuth.m */; };
 		FA1F77C716B77F02001510AF /* RSocialShare.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1F77C616B77F02001510AF /* RSocialShare.m */; };
+		FA22D67416BE596E00478FC4 /* RHTTPFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FA22D67316BE596E00478FC4 /* RHTTPFormDataRequest.m */; };
 		FA2E5EC616A7F519000D59D8 /* RSocialSinaWeiboAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2E5EC516A7F519000D59D8 /* RSocialSinaWeiboAuth.m */; };
 		FA2E5ECD16A80590000D59D8 /* RSocialRenrenAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2E5ECC16A80590000D59D8 /* RSocialRenrenAuth.m */; };
 		FA64523916A84030005A4B39 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FA64523816A84030005A4B39 /* MBProgressHUD.m */; };
@@ -38,6 +39,8 @@
 		FA1F77B816B39AB3001510AF /* RSocialTencentQQAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSocialTencentQQAuth.m; sourceTree = "<group>"; };
 		FA1F77C516B77F02001510AF /* RSocialShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSocialShare.h; sourceTree = "<group>"; };
 		FA1F77C616B77F02001510AF /* RSocialShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSocialShare.m; sourceTree = "<group>"; };
+		FA22D67216BE596E00478FC4 /* RHTTPFormDataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RHTTPFormDataRequest.h; path = Frameworks/RFoundation/RHTTPRequest/RHTTPFormDataRequest.h; sourceTree = "<group>"; };
+		FA22D67316BE596E00478FC4 /* RHTTPFormDataRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RHTTPFormDataRequest.m; path = Frameworks/RFoundation/RHTTPRequest/RHTTPFormDataRequest.m; sourceTree = "<group>"; };
 		FA2E5EC416A7F519000D59D8 /* RSocialSinaWeiboAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSocialSinaWeiboAuth.h; sourceTree = "<group>"; };
 		FA2E5EC516A7F519000D59D8 /* RSocialSinaWeiboAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSocialSinaWeiboAuth.m; sourceTree = "<group>"; };
 		FA2E5ECB16A80590000D59D8 /* RSocialRenrenAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSocialRenrenAuth.h; sourceTree = "<group>"; };
@@ -91,11 +94,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		FA2E5EC116A7F461000D59D8 /* Services */ = {
+		FA22D65816BE15AE00478FC4 /* Douban */ = {
 			isa = PBXGroup;
 			children = (
 				FAAFB92216A6E7AD0021AB6D /* RSocialDoubanAuth.h */,
 				FAAFB92316A6E7AD0021AB6D /* RSocialDoubanAuth.m */,
+			);
+			name = Douban;
+			sourceTree = "<group>";
+		};
+		FA2E5EC116A7F461000D59D8 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				FA22D65816BE15AE00478FC4 /* Douban */,
 				FA2E5EC416A7F519000D59D8 /* RSocialSinaWeiboAuth.h */,
 				FA2E5EC516A7F519000D59D8 /* RSocialSinaWeiboAuth.m */,
 				FA2E5ECB16A80590000D59D8 /* RSocialRenrenAuth.h */,
@@ -221,6 +232,8 @@
 			children = (
 				FA64524016A8404C005A4B39 /* RHTTPRequest.h */,
 				FA64524116A8404C005A4B39 /* RHTTPRequest.m */,
+				FA22D67216BE596E00478FC4 /* RHTTPFormDataRequest.h */,
+				FA22D67316BE596E00478FC4 /* RHTTPFormDataRequest.m */,
 			);
 			name = RHTTPRequest;
 			sourceTree = "<group>";
@@ -316,6 +329,7 @@
 				FA64524916A91D48005A4B39 /* RSocialTencentWeiboAuth.m in Sources */,
 				FA1F77B916B39AB3001510AF /* RSocialTencentQQAuth.m in Sources */,
 				FA1F77C716B77F02001510AF /* RSocialShare.m in Sources */,
+				FA22D67416BE596E00478FC4 /* RHTTPFormDataRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

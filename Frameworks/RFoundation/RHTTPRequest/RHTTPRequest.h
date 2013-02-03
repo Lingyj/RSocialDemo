@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface RHTTPRequest : NSObject
+@interface RHTTPRequest : NSMutableURLRequest
 
 extern NSString * const HTTPMethodGET;
 extern NSString * const HTTPMethodPOST;

@@ -1,0 +1,110 @@
+//
+//  RHTTPFormDataRequest.m
+//  RSocialDemo
+//
+//  Created by Alex Rezit on 03/02/2013.
+//  Copyright (c) 2013 Seymour Dev. All rights reserved.
+//
+
+#import "NSString+URLCoding.h"
+#import "RHTTPFormDataRequest.h"
+
+@implementation RHTTPFormDataRequest
+
++ (RHTTPFormDataRequest *)formDataRequestForURL:(NSURL *)requestURL headers:(NSDictionary *)headers requestBody:(NSDictionary *)requestDictionary
+{
+    RHTTPFormDataRequest *formDataRequest = [[[RHTTPFormDataRequest alloc] initWithURL:requestURL] autorelease];
+    formDataRequest.HTTPMethod = HTTPMethodPOST;
+    formDataRequest.allHTTPHeaderFields = headers;
+    
+    NSString *boundary = nil;
+    __block NSMutableData *bodyData = nil;
+    while (TRUE) {
+        __block BOOL isBoundaryValid = YES;
+        // Generate boundary
+        NSUInteger randomStringLength = 16;
+        NSMutableString *randomString = [NSMutableString stringWithCapacity:randomStringLength];
+        NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        for (NSUInteger idx = 0; idx < randomStringLength; idx++) {
+            [randomString appendString:[NSString stringWithFormat:@"%C", [letters characterAtIndex:arc4random() % letters.length]]];
+        }
+        boundary = [NSString stringWithFormat:@"----RHTTPFormDataBoundary%@", randomString];
+        
+        // Generate data
+        bodyData = [NSMutableData data];
+        [requestDictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+            if ([key isKindOfClass:[NSString class]] ||
+                [key isKindOfClass:[NSNumber class]]) {
+                NSMutableData *partData = [NSMutableData data];
+                
+                // Boundary
+                [partData appendData:[[NSString stringWithFormat:@"--%@\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+                
+                // Key
+                NSString *keyString = [key URLEncodedString];
+                if ([obj isKindOfClass:[NSString class]] ||
+                    [obj isKindOfClass:[NSNumber class]] ||
+                    [obj isKindOfClass:[NSArray class]] ||
+                    [obj isKindOfClass:[NSSet class]] ||
+                    [obj isKindOfClass:[NSOrderedSet class]]) {
+                    [partData appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\n", keyString] dataUsingEncoding:NSUTF8StringEncoding]];
+                } else {
+                    [partData appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"file\"\n", keyString] dataUsingEncoding:NSUTF8StringEncoding]];
+                }
+                
+                // Obj
+                NSData *objData = nil;
+                if ([obj isKindOfClass:[NSString class]]) {
+                    objData = [obj dataUsingEncoding:NSUTF8StringEncoding];
+                } else if ([obj isKindOfClass:[NSNumber class]]) {
+                    objData = [[obj stringValue] dataUsingEncoding:NSUTF8StringEncoding];
+                } else if ([obj isKindOfClass:[NSArray class]] ||
+                           [obj isKindOfClass:[NSSet class]] ||
+                           [obj isKindOfClass:[NSOrderedSet class]]) {
+                    NSMutableArray *objComponents = [NSMutableArray arrayWithCapacity:[obj count]];
+                    for (id objComponent in obj) {
+                        NSString *objComponentString = nil;
+                        if ([objComponent isKindOfClass:[NSString class]]) {
+                            objComponentString = objComponent;
+                        } else if ([objComponent isKindOfClass:[NSNumber class]]) {
+                            objComponentString = [objComponent stringValue];
+                        }
+                        [objComponents addObject:objComponentString];
+                    }
+                    objData = [[objComponents componentsJoinedByString:@","] dataUsingEncoding:NSUTF8StringEncoding];
+                } else if ([obj isKindOfClass:[NSData class]]) {
+                    objData = obj;
+                    [partData appendData:[@"Content-Type: application/octet-stream\n" dataUsingEncoding:NSUTF8StringEncoding]];
+                } else if ([obj isKindOfClass:[UIImage class]]) {
+                    objData = UIImagePNGRepresentation(obj);
+                    [partData appendData:[@"Content-Type: image/png\n" dataUsingEncoding:NSUTF8StringEncoding]];
+                }
+                [partData appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
+                if (objData && [objData rangeOfData:[boundary dataUsingEncoding:NSUTF8StringEncoding] options:NULL range:NSMakeRange(0, objData.length)].location != NSNotFound) {
+                    bodyData = nil;
+                    isBoundaryValid = NO;
+                    *stop = YES;
+                } else {
+                    [partData appendData:objData];
+                }
+                
+                // End
+                [partData appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
+                
+                [bodyData appendData:partData];
+            }
+        }];
+        
+        [bodyData appendData:[[NSString stringWithFormat:@"--%@--\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        if (isBoundaryValid) {
+            break;
+        }
+    }
+    formDataRequest.HTTPBody = bodyData;
+    [formDataRequest setValue:[NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary] forHTTPHeaderField:@"Content-Type"];
+    [formDataRequest setValue:@(bodyData.length).stringValue forHTTPHeaderField:@"Content-Length"];
+    
+    return formDataRequest;
+}
+
+@end
