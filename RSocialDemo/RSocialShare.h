@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "RSocialOAuth.h"
 
 typedef NS_ENUM(NSInteger, RSocialShareType) {
     RSocialShareTypeDefault,
@@ -33,8 +34,6 @@ typedef NS_ENUM(NSInteger, RSocialShareLinkType) {
 - (void)socialShare:(RSocialShare *)socialShare didFailWithError:(NSError *)error;
 
 @end
-
-@class RSocialOAuth;
 
 @interface RSocialShare : NSObject
 

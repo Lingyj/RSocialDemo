@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 Seymour Dev. All rights reserved.
 //
 
-#import "RSocialOAuth.h"
 #import "RSocialShare.h"
 
 @interface RSocialShare ()
