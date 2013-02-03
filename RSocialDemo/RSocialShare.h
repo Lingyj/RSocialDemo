@@ -49,6 +49,7 @@ typedef NS_ENUM(NSInteger, RSocialShareLinkType) {
 
 // Image
 @property (nonatomic, strong) UIImage *image; // Upload
+@property (nonatomic, readonly) NSData *imageData; // Returns data of self.image
 @property (nonatomic, strong) NSString *imageLink; // Use web image
 
 // Link (including audio and video)

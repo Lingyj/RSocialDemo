@@ -55,4 +55,11 @@
     NSAssert(0, @"RSocialShare: Method not implemented.");
 }
 
+#pragma mark - Getters and setters
+
+- (NSData *)imageData
+{
+    return UIImagePNGRepresentation(self.image);
+}
+
 @end
