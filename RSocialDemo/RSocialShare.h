@@ -34,6 +34,8 @@ typedef NS_ENUM(NSInteger, RSocialShareLinkType) {
 
 @end
 
+@class RSocialOAuth;
+
 @interface RSocialShare : NSObject
 
 @property (nonatomic, assign) id<RSocialShareDelegate> delegate;
