@@ -187,7 +187,7 @@ CGFloat const kRSocialShareFormBottomBarHeight = 44.0f;
     self.view.backgroundColor = [UIColor whiteColor];
     
     if ([self.content.allKeys containsObject:kRSocialShareContentKeyMaxTextLength]) {
-        self.maxTextLength = self.content[kRSocialShareContentKeyMaxTextLength];
+        self.maxTextLength = [self.content[kRSocialShareContentKeyMaxTextLength] integerValue];
     }
     
     UIBarButtonItem *cancelBarButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonPressed:)] autorelease];
