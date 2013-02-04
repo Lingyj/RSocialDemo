@@ -66,18 +66,18 @@
 
 - (void)share
 {
-    // Find the window on the top.
-    UIApplication *application = [UIApplication sharedApplication];
-    UIWindow *topWindow = application.keyWindow;
-    if (topWindow.windowLevel != UIWindowLevelNormal) {
-        for (UIWindow *window in application.windows) {
-            if (window.windowLevel == UIWindowLevelNormal) {
-                topWindow = window;
-                break;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        // Find the window on the top.
+        UIApplication *application = [UIApplication sharedApplication];
+        UIWindow *topWindow = application.keyWindow;
+        if (topWindow.windowLevel != UIWindowLevelNormal) {
+            for (UIWindow *window in application.windows) {
+                if (window.windowLevel == UIWindowLevelNormal) {
+                    topWindow = window;
+                    break;
+                }
             }
         }
-    }
-    dispatch_async(dispatch_get_main_queue(), ^{
         // Prepare progress HUD
         __block MBProgressHUD *progressHUD = [[[MBProgressHUD alloc] initWithWindow:topWindow] autorelease];
         [topWindow.rootViewController.view addSubview:progressHUD];
