@@ -11,13 +11,9 @@
 		FA19E0BE16BE7FB800E2B949 /* RSocialShareFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA19E0BD16BE7FB800E2B949 /* RSocialShareFormViewController.m */; };
 		FA1F77B916B39AB3001510AF /* RSocialTencentQQAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1F77B816B39AB3001510AF /* RSocialTencentQQAuth.m */; };
 		FA1F77C716B77F02001510AF /* RSocialShare.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1F77C616B77F02001510AF /* RSocialShare.m */; };
-		FA22D67416BE596E00478FC4 /* RHTTPFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FA22D67316BE596E00478FC4 /* RHTTPFormDataRequest.m */; };
 		FA2E5EC616A7F519000D59D8 /* RSocialSinaWeiboAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2E5EC516A7F519000D59D8 /* RSocialSinaWeiboAuth.m */; };
 		FA2E5ECD16A80590000D59D8 /* RSocialRenrenAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2E5ECC16A80590000D59D8 /* RSocialRenrenAuth.m */; };
 		FA64523916A84030005A4B39 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FA64523816A84030005A4B39 /* MBProgressHUD.m */; };
-		FA64523E16A84040005A4B39 /* NSNumber+URLCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = FA64523B16A84040005A4B39 /* NSNumber+URLCoding.m */; };
-		FA64523F16A84040005A4B39 /* NSString+URLCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = FA64523D16A84040005A4B39 /* NSString+URLCoding.m */; };
-		FA64524216A8404C005A4B39 /* RHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FA64524116A8404C005A4B39 /* RHTTPRequest.m */; };
 		FA64524916A91D48005A4B39 /* RSocialTencentWeiboAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = FA64524816A91D48005A4B39 /* RSocialTencentWeiboAuth.m */; };
 		FAAFB8EC16A6E6440021AB6D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAAFB8EB16A6E6440021AB6D /* UIKit.framework */; };
 		FAAFB8EE16A6E6440021AB6D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAAFB8ED16A6E6440021AB6D /* Foundation.framework */; };
@@ -34,6 +30,10 @@
 		FAAFB92416A6E7AD0021AB6D /* RSocialDoubanAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = FAAFB92316A6E7AD0021AB6D /* RSocialDoubanAuth.m */; };
 		FAAFB92716A6F28E0021AB6D /* RSocialAuthWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAAFB92616A6F28E0021AB6D /* RSocialAuthWebViewController.m */; };
 		FAAFBA1A16A7E2390021AB6D /* RSocialOAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = FAAFBA1916A7E2390021AB6D /* RSocialOAuth.m */; };
+		FAC2DFEE16BFBD6F00289F86 /* NSNumber+URLCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC2DFE616BFBD6F00289F86 /* NSNumber+URLCoding.m */; };
+		FAC2DFEF16BFBD6F00289F86 /* NSString+URLCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC2DFE816BFBD6F00289F86 /* NSString+URLCoding.m */; };
+		FAC2DFF016BFBD6F00289F86 /* RHTTPFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC2DFEB16BFBD6F00289F86 /* RHTTPFormDataRequest.m */; };
+		FAC2DFF116BFBD6F00289F86 /* RHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC2DFED16BFBD6F00289F86 /* RHTTPRequest.m */; };
 		FAD71B1B16BFB27500FE67DA /* RSocialCheckmark.png in Resources */ = {isa = PBXBuildFile; fileRef = FAD71B1916BFB27500FE67DA /* RSocialCheckmark.png */; };
 		FAD71B1C16BFB27500FE67DA /* RSocialCheckmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAD71B1A16BFB27500FE67DA /* RSocialCheckmark@2x.png */; };
 /* End PBXBuildFile section */
@@ -47,20 +47,12 @@
 		FA1F77B816B39AB3001510AF /* RSocialTencentQQAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSocialTencentQQAuth.m; sourceTree = "<group>"; };
 		FA1F77C516B77F02001510AF /* RSocialShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSocialShare.h; sourceTree = "<group>"; };
 		FA1F77C616B77F02001510AF /* RSocialShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSocialShare.m; sourceTree = "<group>"; };
-		FA22D67216BE596E00478FC4 /* RHTTPFormDataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RHTTPFormDataRequest.h; path = Frameworks/RFoundation/RHTTPRequest/RHTTPFormDataRequest.h; sourceTree = "<group>"; };
-		FA22D67316BE596E00478FC4 /* RHTTPFormDataRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RHTTPFormDataRequest.m; path = Frameworks/RFoundation/RHTTPRequest/RHTTPFormDataRequest.m; sourceTree = "<group>"; };
 		FA2E5EC416A7F519000D59D8 /* RSocialSinaWeiboAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSocialSinaWeiboAuth.h; sourceTree = "<group>"; };
 		FA2E5EC516A7F519000D59D8 /* RSocialSinaWeiboAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSocialSinaWeiboAuth.m; sourceTree = "<group>"; };
 		FA2E5ECB16A80590000D59D8 /* RSocialRenrenAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSocialRenrenAuth.h; sourceTree = "<group>"; };
 		FA2E5ECC16A80590000D59D8 /* RSocialRenrenAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSocialRenrenAuth.m; sourceTree = "<group>"; };
 		FA64523716A84030005A4B39 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = Frameworks/MBProgressHUD/MBProgressHUD.h; sourceTree = "<group>"; };
 		FA64523816A84030005A4B39 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = Frameworks/MBProgressHUD/MBProgressHUD.m; sourceTree = "<group>"; };
-		FA64523A16A84040005A4B39 /* NSNumber+URLCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSNumber+URLCoding.h"; path = "Frameworks/RFoundation/Category/NSNumber+URLCoding.h"; sourceTree = "<group>"; };
-		FA64523B16A84040005A4B39 /* NSNumber+URLCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSNumber+URLCoding.m"; path = "Frameworks/RFoundation/Category/NSNumber+URLCoding.m"; sourceTree = "<group>"; };
-		FA64523C16A84040005A4B39 /* NSString+URLCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+URLCoding.h"; path = "Frameworks/RFoundation/Category/NSString+URLCoding.h"; sourceTree = "<group>"; };
-		FA64523D16A84040005A4B39 /* NSString+URLCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+URLCoding.m"; path = "Frameworks/RFoundation/Category/NSString+URLCoding.m"; sourceTree = "<group>"; };
-		FA64524016A8404C005A4B39 /* RHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RHTTPRequest.h; path = Frameworks/RFoundation/RHTTPRequest/RHTTPRequest.h; sourceTree = "<group>"; };
-		FA64524116A8404C005A4B39 /* RHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RHTTPRequest.m; path = Frameworks/RFoundation/RHTTPRequest/RHTTPRequest.m; sourceTree = "<group>"; };
 		FA64524716A91D48005A4B39 /* RSocialTencentWeiboAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSocialTencentWeiboAuth.h; sourceTree = "<group>"; };
 		FA64524816A91D48005A4B39 /* RSocialTencentWeiboAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSocialTencentWeiboAuth.m; sourceTree = "<group>"; };
 		FAAFB8E716A6E6440021AB6D /* RSocialDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSocialDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,6 +78,14 @@
 		FAAFB92616A6F28E0021AB6D /* RSocialAuthWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSocialAuthWebViewController.m; sourceTree = "<group>"; };
 		FAAFBA1816A7E2380021AB6D /* RSocialOAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSocialOAuth.h; sourceTree = "<group>"; };
 		FAAFBA1916A7E2390021AB6D /* RSocialOAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSocialOAuth.m; sourceTree = "<group>"; };
+		FAC2DFE516BFBD6F00289F86 /* NSNumber+URLCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+URLCoding.h"; sourceTree = "<group>"; };
+		FAC2DFE616BFBD6F00289F86 /* NSNumber+URLCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+URLCoding.m"; sourceTree = "<group>"; };
+		FAC2DFE716BFBD6F00289F86 /* NSString+URLCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLCoding.h"; sourceTree = "<group>"; };
+		FAC2DFE816BFBD6F00289F86 /* NSString+URLCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLCoding.m"; sourceTree = "<group>"; };
+		FAC2DFEA16BFBD6F00289F86 /* RHTTPFormDataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RHTTPFormDataRequest.h; sourceTree = "<group>"; };
+		FAC2DFEB16BFBD6F00289F86 /* RHTTPFormDataRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RHTTPFormDataRequest.m; sourceTree = "<group>"; };
+		FAC2DFEC16BFBD6F00289F86 /* RHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RHTTPRequest.h; sourceTree = "<group>"; };
+		FAC2DFED16BFBD6F00289F86 /* RHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RHTTPRequest.m; sourceTree = "<group>"; };
 		FAD71B1916BFB27500FE67DA /* RSocialCheckmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RSocialCheckmark.png; sourceTree = "<group>"; };
 		FAD71B1A16BFB27500FE67DA /* RSocialCheckmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RSocialCheckmark@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -173,7 +173,7 @@
 		FAAFB8EA16A6E6440021AB6D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				FAAFB91216A6E65F0021AB6D /* RFoundation */,
+				FAC2DFE216BFBD4100289F86 /* RKit */,
 				FAAFB91E16A6E7290021AB6D /* MBProgressHUD */,
 				FAAFB8EB16A6E6440021AB6D /* UIKit.framework */,
 				FAAFB8ED16A6E6440021AB6D /* Foundation.framework */,
@@ -223,37 +223,6 @@
 			name = RSocial;
 			sourceTree = "<group>";
 		};
-		FAAFB91216A6E65F0021AB6D /* RFoundation */ = {
-			isa = PBXGroup;
-			children = (
-				FAAFB91316A6E6DD0021AB6D /* Category */,
-				FAAFB91A16A6E6EA0021AB6D /* RHTTPRequest */,
-			);
-			name = RFoundation;
-			sourceTree = "<group>";
-		};
-		FAAFB91316A6E6DD0021AB6D /* Category */ = {
-			isa = PBXGroup;
-			children = (
-				FA64523A16A84040005A4B39 /* NSNumber+URLCoding.h */,
-				FA64523B16A84040005A4B39 /* NSNumber+URLCoding.m */,
-				FA64523C16A84040005A4B39 /* NSString+URLCoding.h */,
-				FA64523D16A84040005A4B39 /* NSString+URLCoding.m */,
-			);
-			name = Category;
-			sourceTree = "<group>";
-		};
-		FAAFB91A16A6E6EA0021AB6D /* RHTTPRequest */ = {
-			isa = PBXGroup;
-			children = (
-				FA64524016A8404C005A4B39 /* RHTTPRequest.h */,
-				FA64524116A8404C005A4B39 /* RHTTPRequest.m */,
-				FA22D67216BE596E00478FC4 /* RHTTPFormDataRequest.h */,
-				FA22D67316BE596E00478FC4 /* RHTTPFormDataRequest.m */,
-			);
-			name = RHTTPRequest;
-			sourceTree = "<group>";
-		};
 		FAAFB91E16A6E7290021AB6D /* MBProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -261,6 +230,46 @@
 				FA64523816A84030005A4B39 /* MBProgressHUD.m */,
 			);
 			name = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		FAC2DFE216BFBD4100289F86 /* RKit */ = {
+			isa = PBXGroup;
+			children = (
+				FAC2DFE316BFBD6F00289F86 /* RFoundation */,
+			);
+			name = RKit;
+			sourceTree = "<group>";
+		};
+		FAC2DFE316BFBD6F00289F86 /* RFoundation */ = {
+			isa = PBXGroup;
+			children = (
+				FAC2DFE416BFBD6F00289F86 /* Category */,
+				FAC2DFE916BFBD6F00289F86 /* RHTTPRequest */,
+			);
+			name = RFoundation;
+			path = Frameworks/RKit/RFoundation;
+			sourceTree = "<group>";
+		};
+		FAC2DFE416BFBD6F00289F86 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				FAC2DFE516BFBD6F00289F86 /* NSNumber+URLCoding.h */,
+				FAC2DFE616BFBD6F00289F86 /* NSNumber+URLCoding.m */,
+				FAC2DFE716BFBD6F00289F86 /* NSString+URLCoding.h */,
+				FAC2DFE816BFBD6F00289F86 /* NSString+URLCoding.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		FAC2DFE916BFBD6F00289F86 /* RHTTPRequest */ = {
+			isa = PBXGroup;
+			children = (
+				FAC2DFEA16BFBD6F00289F86 /* RHTTPFormDataRequest.h */,
+				FAC2DFEB16BFBD6F00289F86 /* RHTTPFormDataRequest.m */,
+				FAC2DFEC16BFBD6F00289F86 /* RHTTPRequest.h */,
+				FAC2DFED16BFBD6F00289F86 /* RHTTPRequest.m */,
+			);
+			path = RHTTPRequest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -341,15 +350,15 @@
 				FA2E5EC616A7F519000D59D8 /* RSocialSinaWeiboAuth.m in Sources */,
 				FA2E5ECD16A80590000D59D8 /* RSocialRenrenAuth.m in Sources */,
 				FA64523916A84030005A4B39 /* MBProgressHUD.m in Sources */,
-				FA64523E16A84040005A4B39 /* NSNumber+URLCoding.m in Sources */,
-				FA64523F16A84040005A4B39 /* NSString+URLCoding.m in Sources */,
-				FA64524216A8404C005A4B39 /* RHTTPRequest.m in Sources */,
 				FA64524916A91D48005A4B39 /* RSocialTencentWeiboAuth.m in Sources */,
 				FA1F77B916B39AB3001510AF /* RSocialTencentQQAuth.m in Sources */,
 				FA1F77C716B77F02001510AF /* RSocialShare.m in Sources */,
-				FA22D67416BE596E00478FC4 /* RHTTPFormDataRequest.m in Sources */,
 				FA19E0BB16BE7DFF00E2B949 /* RSocialDoubanShare.m in Sources */,
 				FA19E0BE16BE7FB800E2B949 /* RSocialShareFormViewController.m in Sources */,
+				FAC2DFEE16BFBD6F00289F86 /* NSNumber+URLCoding.m in Sources */,
+				FAC2DFEF16BFBD6F00289F86 /* NSString+URLCoding.m in Sources */,
+				FAC2DFF016BFBD6F00289F86 /* RHTTPFormDataRequest.m in Sources */,
+				FAC2DFF116BFBD6F00289F86 /* RHTTPRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
