@@ -18,6 +18,8 @@ extern NSString * const kRSocialShareContentKeyLinkTitle;
 extern NSString * const kRSocialShareContentKeyLinkDescription;
 extern NSString * const kRSocialShareContentKeyLinkImageLink;
 
+extern NSString * const kRSocialShareContentKeyMaxTextLength;
+
 @class RSocialShareFormViewController;
 
 @protocol RSocialShareFormViewControllerDelegate <NSObject>

@@ -18,6 +18,8 @@ NSString * const kRSocialShareContentKeyLinkTitle = @"linkTitle";
 NSString * const kRSocialShareContentKeyLinkDescription = @"linkDescription";
 NSString * const kRSocialShareContentKeyLinkImageLink = @"linkImageLink";
 
+NSString * const kRSocialShareContentKeyMaxTextLength = @"maxTextLength";
+
 NSUInteger const kRSocialShareFormTextLengthOffset = 20;
 
 CGFloat const kRSocialShareFormBottomBarHeight = 44.0f;
@@ -182,6 +184,12 @@ CGFloat const kRSocialShareFormBottomBarHeight = 44.0f;
 {
     [super viewDidLoad];
     
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    if ([self.content.allKeys containsObject:kRSocialShareContentKeyMaxTextLength]) {
+        self.maxTextLength = self.content[kRSocialShareContentKeyMaxTextLength];
+    }
+    
     UIBarButtonItem *cancelBarButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonPressed:)] autorelease];
     self.cancelBarButton = cancelBarButton;
     
@@ -193,6 +201,7 @@ CGFloat const kRSocialShareFormBottomBarHeight = 44.0f;
     
     UITextView *contentTextView = [[[UITextView alloc] init] autorelease];
     contentTextView.delegate = self;
+    contentTextView.clipsToBounds = NO;
     contentTextView.font = [UIFont systemFontOfSize:18.0f];
     contentTextView.text = self.content[kRSocialShareContentKeyContent];
     self.contentTextView = contentTextView;
@@ -214,6 +223,9 @@ CGFloat const kRSocialShareFormBottomBarHeight = 44.0f;
     [self updateFrameInBounds:viewBounds];
     
     [self.contentTextView becomeFirstResponder];
+    
+    [self updateButtonStatus];
+    [self updateTextCounter];
 }
 
 - (void)viewDidAppear:(BOOL)animated
