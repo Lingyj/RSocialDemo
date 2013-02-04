@@ -8,7 +8,7 @@
 | Facebook       |       |       |
 | Instagram      |       |       |
 | Flickr         |       |       |
-| Douban         |   ✔   |       |
+| Douban         |   ✔   |   ✔   |
 | Sina Weibo     |   ✔   |       |
 | Renren         |   ✔   |       |
 | Tencent Weibo  |   ✔   |       |
