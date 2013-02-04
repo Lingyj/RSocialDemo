@@ -71,4 +71,18 @@ NSString * const HTTPMethodDELETE = @"DELETE";
     });
 }
 
+#pragma mark - Life cycle
+
++ (RHTTPRequest *)requestForURL:(NSURL *)requestURL
+                         method:(NSString *)method
+                        headers:(NSDictionary *)headers
+                    requestBody:(NSDictionary *)requestDictionary
+{
+    RHTTPRequest *request = [RHTTPRequest requestWithURL:requestURL];
+    request.HTTPMethod = method;
+    request.allHTTPHeaderFields = headers;
+    request.HTTPBody = [[NSString stringWithURLEncodedDictionary:requestDictionary] dataUsingEncoding:NSUTF8StringEncoding];
+    return request;
+}
+
 @end

@@ -27,4 +27,9 @@ extern NSString * const HTTPMethodDELETE;
                           requestBody:(NSDictionary *)requestDictionary
                            completion:(void (^)(NSDictionary *responseHeaders, NSDictionary *responseDictionary))completion;
 
++ (RHTTPRequest *)requestForURL:(NSURL *)requestURL
+                         method:(NSString *)method
+                        headers:(NSDictionary *)headers
+                    requestBody:(NSDictionary *)requestDictionary;
+
 @end
