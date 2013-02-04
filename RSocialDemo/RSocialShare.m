@@ -6,12 +6,14 @@
 //  Copyright (c) 2013 Seymour Dev. All rights reserved.
 //
 
+#import "MBProgressHUD.h"
 #import "RSocialShare.h"
 
 @interface RSocialShare ()
 
 @property (nonatomic, assign) dispatch_semaphore_t isDisplayingShareFormViewSem;
 
+// Share flow
 - (void)promptWithShareForm;
 - (void)handleFormContent:(NSDictionary *)content;
 - (void)share;
@@ -24,7 +26,6 @@
 
 - (void)showForm
 {
-#warning Show share form.
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         dispatch_semaphore_t isDisplayingShareFormViewSem = dispatch_semaphore_create(0);
         self.isDisplayingShareFormViewSem = isDisplayingShareFormViewSem;
@@ -32,7 +33,6 @@
         dispatch_semaphore_wait(isDisplayingShareFormViewSem, DISPATCH_TIME_FOREVER);
         dispatch_release(isDisplayingShareFormViewSem);
         self.isDisplayingShareFormViewSem = NULL;
-        [self share];
     });
     
 }
@@ -41,7 +41,6 @@
 
 - (void)promptWithShareForm
 {
-#warning Generate content.
     NSMutableDictionary *content = [NSMutableDictionary dictionary];
     [content setValue:self.content forKey:kRSocialShareContentKeyContent];
     [content setValue:self.image forKey:kRSocialShareContentKeyImage];
@@ -62,31 +61,78 @@
     self.linkTitle = content[kRSocialShareContentKeyLinkTitle];
     self.linkDescription = content[kRSocialShareContentKeyLinkDescription];
     self.linkImageLink = content[kRSocialShareContentKeyLinkImageLink];
+    [self share];
 }
 
 - (void)share
 {
-    [self.auth authorizeWithCompletionHandler:^(BOOL success) {
-        if (success) {
-            [self sendFormWithCompletionHandler:^(BOOL success, NSDictionary *status, NSError *error) {
+    // Find the window on the top.
+    UIApplication *application = [UIApplication sharedApplication];
+    UIWindow *topWindow = application.keyWindow;
+    if (topWindow.windowLevel != UIWindowLevelNormal) {
+        for (UIWindow *window in application.windows) {
+            if (window.windowLevel == UIWindowLevelNormal) {
+                topWindow = window;
+                break;
+            }
+        }
+    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        // Prepare progress HUD
+        __block MBProgressHUD *progressHUD = [[[MBProgressHUD alloc] initWithWindow:topWindow] autorelease];
+        [topWindow.rootViewController.view addSubview:progressHUD];
+        progressHUD.labelText = NSLocalizedString(@"RSOCIAL_SHARE_AUTHORIZING", nil);
+        [progressHUD show:YES];
+        
+        // Authorize
+        [self.auth authorizeWithCompletionHandler:^(BOOL success) {
+            dispatch_async(dispatch_get_main_queue(), ^{
                 if (success) {
-                    if ([self.delegate respondsToSelector:@selector(socialShare:didFinishWithStatus:)]) {
-                        [self.delegate socialShare:self didFinishWithStatus:status];
-                    }
+                    // Update HUD
+                    progressHUD.labelText = NSLocalizedString(@"RSOCIAL_SHARE_SENDING", nil);
+                    
+                    // Send form
+                    [self sendFormWithCompletionHandler:^(BOOL success, NSDictionary *status, NSError *error) {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            if (success) {
+                                // Update HUD
+                                progressHUD.mode = MBProgressHUDModeCustomView;
+                                progressHUD.customView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"RSocialCheckmark"]] autorelease];
+                                progressHUD.labelText = NSLocalizedString(@"RSOCIAL_SHARE_SUCCESS", nil);
+                                
+                                
+                                if ([self.delegate respondsToSelector:@selector(socialShare:didFinishWithStatus:)]) {
+                                    [self.delegate socialShare:self didFinishWithStatus:status];
+                                }
+                            } else {
+                                // Update HUD
+                                progressHUD.labelText = NSLocalizedString(@"RSOCIAL_SHARE_FAIL", nil);
+                                
+                                // Use delegate
+                                if ([self.delegate respondsToSelector:@selector(socialShare:didFailWithError:)]) {
+                                    [self.delegate socialShare:self didFailWithError:error];
+                                }
+                            }
+                            
+                            // Update HUD
+                            [progressHUD hide:YES afterDelay:0.3f];
+                        });
+                    }];
                 } else {
+                    // Update HUD
+                    progressHUD.labelText = NSLocalizedString(@"RSOCIAL_SHARE_AUTH_FAIL", nil);
+                    [progressHUD hide:YES afterDelay:0.3f];
+                    
+                    // Use delegate
                     if ([self.delegate respondsToSelector:@selector(socialShare:didFailWithError:)]) {
+                        NSError *error = nil;
+#warning Add error.
                         [self.delegate socialShare:self didFailWithError:error];
                     }
                 }
-            }];
-        } else {
-            if ([self.delegate respondsToSelector:@selector(socialShare:didFailWithError:)]) {
-                NSError *error = nil;
-#warning Add error.
-                [self.delegate socialShare:self didFailWithError:error];
-            }
-        }
-    }];
+            });
+        }];
+    });
 }
 
 - (void)sendFormWithCompletionHandler:(void (^)(BOOL success, NSDictionary *status, NSError *error))completion

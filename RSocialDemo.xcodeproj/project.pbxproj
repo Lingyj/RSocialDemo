@@ -34,6 +34,8 @@
 		FAAFB92416A6E7AD0021AB6D /* RSocialDoubanAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = FAAFB92316A6E7AD0021AB6D /* RSocialDoubanAuth.m */; };
 		FAAFB92716A6F28E0021AB6D /* RSocialAuthWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAAFB92616A6F28E0021AB6D /* RSocialAuthWebViewController.m */; };
 		FAAFBA1A16A7E2390021AB6D /* RSocialOAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = FAAFBA1916A7E2390021AB6D /* RSocialOAuth.m */; };
+		FAD71B1B16BFB27500FE67DA /* RSocialCheckmark.png in Resources */ = {isa = PBXBuildFile; fileRef = FAD71B1916BFB27500FE67DA /* RSocialCheckmark.png */; };
+		FAD71B1C16BFB27500FE67DA /* RSocialCheckmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAD71B1A16BFB27500FE67DA /* RSocialCheckmark@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +86,8 @@
 		FAAFB92616A6F28E0021AB6D /* RSocialAuthWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSocialAuthWebViewController.m; sourceTree = "<group>"; };
 		FAAFBA1816A7E2380021AB6D /* RSocialOAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSocialOAuth.h; sourceTree = "<group>"; };
 		FAAFBA1916A7E2390021AB6D /* RSocialOAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSocialOAuth.m; sourceTree = "<group>"; };
+		FAD71B1916BFB27500FE67DA /* RSocialCheckmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RSocialCheckmark.png; sourceTree = "<group>"; };
+		FAD71B1A16BFB27500FE67DA /* RSocialCheckmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RSocialCheckmark@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +200,8 @@
 		FAAFB8F216A6E6440021AB6D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FAD71B1916BFB27500FE67DA /* RSocialCheckmark.png */,
+				FAD71B1A16BFB27500FE67DA /* RSocialCheckmark@2x.png */,
 				FAAFB8F316A6E6440021AB6D /* RSocialDemo-Info.plist */,
 				FAAFB8F416A6E6440021AB6D /* InfoPlist.strings */,
 				FAAFB8F716A6E6440021AB6D /* main.m */,
@@ -314,6 +320,8 @@
 				FAAFB90216A6E6440021AB6D /* Default-568h@2x.png in Resources */,
 				FAAFB90816A6E6440021AB6D /* ViewController_iPhone.xib in Resources */,
 				FAAFB90B16A6E6440021AB6D /* ViewController_iPad.xib in Resources */,
+				FAD71B1B16BFB27500FE67DA /* RSocialCheckmark.png in Resources */,
+				FAD71B1C16BFB27500FE67DA /* RSocialCheckmark@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

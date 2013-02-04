@@ -41,7 +41,7 @@ CGFloat const kRSocialShareFormBottomBarHeight = 44.0f;
 - (void)updateButtonStatus;
 - (void)updateTextCounter;
 - (void)updateFrameInBounds:(CGRect)bounds;
-- (void)dismiss;
+- (void)dismissOnCompletion:(void (^)(void))completion;
 
 @end
 
@@ -54,16 +54,18 @@ CGFloat const kRSocialShareFormBottomBarHeight = 44.0f;
     if ([self.delegate respondsToSelector:@selector(shareFormViewControllerDidCancel:)]) {
         [self.delegate shareFormViewControllerDidCancel:self];
     }
-    [self dismiss];
+    [self dismissOnCompletion:nil];
 }
 
 - (void)doneButtonPressed:(UIButton *)button
 {
-    self.content[kRSocialShareContentKeyContent] = self.contentTextView.text;
-    if ([self.delegate respondsToSelector:@selector(shareFormViewController:didFinishWithContent:)]) {
-        [self.delegate shareFormViewController:self didFinishWithContent:self.content];
-    }
-    [self dismiss];
+    NSMutableDictionary *content = [self.content.mutableCopy autorelease];
+    content[kRSocialShareContentKeyContent] = self.contentTextView.text;
+    [self dismissOnCompletion:^{
+        if ([self.delegate respondsToSelector:@selector(shareFormViewController:didFinishWithContent:)]) {
+            [self.delegate shareFormViewController:self didFinishWithContent:content];
+        }
+    }];
 }
 
 #pragma mark - View control
@@ -108,11 +110,14 @@ CGFloat const kRSocialShareFormBottomBarHeight = 44.0f;
                                             kRSocialShareFormBottomBarHeight);
 }
 
-- (void)dismiss
+- (void)dismissOnCompletion:(void (^)(void))completion
 {
     [self.navigationController dismissViewControllerAnimated:YES completion:^{
         if ([self.delegate respondsToSelector:@selector(shareFormViewControllerDidDismiss:)]) {
             [self.delegate shareFormViewControllerDidDismiss:self];
+        }
+        if (completion) {
+            completion();
         }
     }];
 }
