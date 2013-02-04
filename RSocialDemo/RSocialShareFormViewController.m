@@ -173,7 +173,7 @@ CGFloat const kRSocialShareFormBottomBarHeight = 44.0f;
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.maxTextLength = 140;
+        self.maxTextLength = 280;
     }
     return self;
 }
