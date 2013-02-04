@@ -49,6 +49,9 @@
     [content setValue:self.linkTitle forKey:kRSocialShareContentKeyLinkTitle];
     [content setValue:self.linkDescription forKey:kRSocialShareContentKeyLinkDescription];
     [content setValue:self.linkImageLink forKey:kRSocialShareContentKeyLinkImageLink];
+    if (self.maxTextLength) {
+        [content setValue:@(self.maxTextLength) forKey:kRSocialShareContentKeyMaxTextLength];
+    }
     [RSocialShareFormViewController promptWithContent:content delegate:self];
 }
 
@@ -145,6 +148,17 @@
 - (NSData *)imageData
 {
     return UIImagePNGRepresentation(self.image);
+}
+
+#pragma mark - Life cycle
+
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        self.maxTextLength = 280;
+    }
+    return self;
 }
 
 #pragma mark - Share form view controller delegate

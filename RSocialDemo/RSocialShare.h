@@ -44,6 +44,7 @@ typedef NS_ENUM(NSInteger, RSocialShareLinkType) {
 
 // Config
 @property (nonatomic, assign) RSocialShareType type;
+@property (nonatomic, assign) NSUInteger maxTextLength;
 
 // Text
 @property (nonatomic, strong) NSString *content;
