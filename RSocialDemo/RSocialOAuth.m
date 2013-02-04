@@ -246,12 +246,17 @@ NSTimeInterval const kRSocialOAuthTimeoutOffset = 300; // 5 min
 
 + (id)sharedAuth
 {
-    static RSocialOAuth *sharedAuth = nil;
+    static NSMutableDictionary *sharedAuths = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedAuth = [[self alloc] init];
+        sharedAuths = [[NSMutableDictionary alloc] init];
     });
-    return sharedAuth;
+    NSString *currentClass = NSStringFromClass(self.class);
+    if (![sharedAuths.allKeys containsObject:currentClass]) {
+        RSocialOAuth *sharedAuth = [[[self alloc] init] autorelease];
+        [sharedAuths setValue:sharedAuth forKey:currentClass];
+    }
+    return sharedAuths[currentClass];
 }
 
 - (void)configure
