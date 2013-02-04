@@ -38,7 +38,7 @@
                 NSMutableData *partData = [NSMutableData data];
                 
                 // Boundary
-                [partData appendData:[[NSString stringWithFormat:@"--%@\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+                [partData appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
                 
                 // Key
                 NSString *keyString = [key URLEncodedString];
@@ -47,9 +47,9 @@
                     [obj isKindOfClass:[NSArray class]] ||
                     [obj isKindOfClass:[NSSet class]] ||
                     [obj isKindOfClass:[NSOrderedSet class]]) {
-                    [partData appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\n", keyString] dataUsingEncoding:NSUTF8StringEncoding]];
+                    [partData appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n", keyString] dataUsingEncoding:NSUTF8StringEncoding]];
                 } else {
-                    [partData appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"file\"\n", keyString] dataUsingEncoding:NSUTF8StringEncoding]];
+                    [partData appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"file\"\r\n", keyString] dataUsingEncoding:NSUTF8StringEncoding]];
                 }
                 
                 // Obj
@@ -74,12 +74,12 @@
                     objData = [[objComponents componentsJoinedByString:@","] dataUsingEncoding:NSUTF8StringEncoding];
                 } else if ([obj isKindOfClass:[NSData class]]) {
                     objData = obj;
-                    [partData appendData:[@"Content-Type: application/octet-stream\n" dataUsingEncoding:NSUTF8StringEncoding]];
+                    [partData appendData:[@"Content-Type: application/octet-stream\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
                 } else if ([obj isKindOfClass:[UIImage class]]) {
                     objData = UIImagePNGRepresentation(obj);
-                    [partData appendData:[@"Content-Type: image/png\n" dataUsingEncoding:NSUTF8StringEncoding]];
+                    [partData appendData:[@"Content-Type: image/png\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
                 }
-                [partData appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
+                [partData appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
                 if (objData && [objData rangeOfData:[boundary dataUsingEncoding:NSUTF8StringEncoding] options:NULL range:NSMakeRange(0, objData.length)].location != NSNotFound) {
                     bodyData = nil;
                     isBoundaryValid = NO;
@@ -89,13 +89,13 @@
                 }
                 
                 // End
-                [partData appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
+                [partData appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
                 
                 [bodyData appendData:partData];
             }
         }];
         
-        [bodyData appendData:[[NSString stringWithFormat:@"--%@--\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        [bodyData appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
         if (isBoundaryValid) {
             break;
         }
