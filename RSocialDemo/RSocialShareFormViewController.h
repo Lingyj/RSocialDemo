@@ -11,10 +11,12 @@
 extern NSString * const kRSocialShareContentKeyContent;
 
 extern NSString * const kRSocialShareContentKeyImage;
+extern NSString * const kRSocialShareContentKeyImageLink;
 
 extern NSString * const kRSocialShareContentKeyLink;
 extern NSString * const kRSocialShareContentKeyLinkTitle;
 extern NSString * const kRSocialShareContentKeyLinkDescription;
+extern NSString * const kRSocialShareContentKeyLinkImageLink;
 
 @class RSocialShareFormViewController;
 

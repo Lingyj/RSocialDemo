@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "RSocialShareFormViewController.h"
 #import "RSocialOAuth.h"
 
 typedef NS_ENUM(NSInteger, RSocialShareType) {
@@ -35,7 +36,7 @@ typedef NS_ENUM(NSInteger, RSocialShareLinkType) {
 
 @end
 
-@interface RSocialShare : NSObject
+@interface RSocialShare : NSObject <RSocialShareFormViewControllerDelegate>
 
 @property (nonatomic, assign) id<RSocialShareDelegate> delegate;
 

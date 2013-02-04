@@ -11,10 +11,12 @@
 NSString * const kRSocialShareContentKeyContent = @"content";
 
 NSString * const kRSocialShareContentKeyImage = @"image";
+NSString * const kRSocialShareContentKeyImageLink = @"imageLink";
 
 NSString * const kRSocialShareContentKeyLink = @"link";
 NSString * const kRSocialShareContentKeyLinkTitle = @"linkTitle";
 NSString * const kRSocialShareContentKeyLinkDescription = @"linkDescription";
+NSString * const kRSocialShareContentKeyLinkImageLink = @"linkImageLink";
 
 NSUInteger const kRSocialShareFormTextLengthOffset = 20;
 
