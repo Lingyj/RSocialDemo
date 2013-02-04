@@ -68,8 +68,8 @@
 {
     dispatch_async(dispatch_get_main_queue(), ^{
         // Find the window on the top.
-        UIApplication *application = [UIApplication sharedApplication];
-        UIWindow *topWindow = application.keyWindow;
+        __block UIApplication *application = [UIApplication sharedApplication];
+        __block UIWindow *topWindow = application.keyWindow;
         if (topWindow.windowLevel != UIWindowLevelNormal) {
             for (UIWindow *window in application.windows) {
                 if (window.windowLevel == UIWindowLevelNormal) {
