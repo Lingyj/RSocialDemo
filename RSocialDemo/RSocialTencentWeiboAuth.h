@@ -13,4 +13,6 @@ extern NSString * const kRSocialTencentWeiboAuthAccessTokenLink;
 
 @interface RSocialTencentWeiboAuth : RSocialOAuth
 
+@property (nonatomic, strong) NSString *openID;
+
 @end

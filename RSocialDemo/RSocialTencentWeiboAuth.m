@@ -12,6 +12,7 @@
 #define kRSocialTencentWeiboAuthKeyRefreshToken @"TencentWeiboRefreshToken"
 #define kRSocialTencentWeiboAuthKeyAccessTokenTimeout @"TencentWeiboAccessTokenTimeout"
 #define kRSocialTencentWeiboAuthKeyRefreshTokenTimeout @"TencentWeiboRefreshTokenTimeout"
+#define kRSocialTencentWeiboAuthKeyOpenID @"TencentWeiboOpenID"
 
 #define kRSocialTencentWeiboStateKeyWebView @"TencentWeiboStateWebView"
 #define kRSocialTencentWeiboStateKeyCode @"TencentWeiboStateCode"
@@ -27,6 +28,12 @@ NSString * const kRSocialTencentWeiboAuthAccessTokenLink = @"https://open.t.qq.c
 @end
 
 @implementation RSocialTencentWeiboAuth
+
+- (void)logout
+{
+    [super logout];
+    self.openID = nil;
+}
 
 #pragma mark - Auth flow
 
@@ -61,6 +68,9 @@ NSString * const kRSocialTencentWeiboAuthAccessTokenLink = @"https://open.t.qq.c
 {
     if ([responseDictionary isKindOfClass:[NSDictionary class]]) {
         if ([responseDictionary[@"state"] isEqualToString:self.authStates[kRSocialTencentWeiboStateKeyWebView]]) {
+            if ([responseDictionary.allKeys containsObject:@"openid"]) {
+                self.openID = responseDictionary[@"openid"];
+            }
             [super handleWebViewAuthResponse:responseDictionary];
         }
     }
@@ -70,6 +80,9 @@ NSString * const kRSocialTencentWeiboAuthAccessTokenLink = @"https://open.t.qq.c
 {
     if ([responseDictionary isKindOfClass:[NSDictionary class]]) {
         if ([responseDictionary[@"state"] isEqualToString:self.authStates[kRSocialTencentWeiboStateKeyCode]]) {
+            if ([responseDictionary.allKeys containsObject:@"openid"]) {
+                self.openID = responseDictionary[@"openid"];
+            }
             [super handleCodeAuthResponse:responseDictionary];
         }
     }
@@ -79,6 +92,9 @@ NSString * const kRSocialTencentWeiboAuthAccessTokenLink = @"https://open.t.qq.c
 {
     if ([responseDictionary isKindOfClass:[NSDictionary class]]) {
         if ([responseDictionary[@"state"] isEqualToString:self.authStates[kRSocialTencentWeiboStateKeyRefreshToken]]) {
+            if ([responseDictionary.allKeys containsObject:@"openid"]) {
+                self.openID = responseDictionary[@"openid"];
+            }
             [super handleRefreshTokenAuthResponse:responseDictionary];
         }
     }
@@ -114,6 +130,12 @@ NSString * const kRSocialTencentWeiboAuthAccessTokenLink = @"https://open.t.qq.c
     return [userDefaults valueForKey:kRSocialTencentWeiboAuthKeyRefreshTokenTimeout];
 }
 
+- (NSString *)openID
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    return [userDefaults valueForKey:kRSocialTencentWeiboAuthKeyOpenID];
+}
+
 - (void)setAccessToken:(NSString *)accessToken
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -139,6 +161,13 @@ NSString * const kRSocialTencentWeiboAuthAccessTokenLink = @"https://open.t.qq.c
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setValue:refreshTokenTimeout forKey:kRSocialTencentWeiboAuthKeyRefreshTokenTimeout];
+    [userDefaults synchronize];
+}
+
+- (void)setOpenID:(NSString *)openID
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setValue:openID forKey:kRSocialTencentWeiboAuthKeyOpenID];
     [userDefaults synchronize];
 }
 
