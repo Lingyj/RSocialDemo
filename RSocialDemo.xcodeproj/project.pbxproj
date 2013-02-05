@@ -35,6 +35,7 @@
 		FAC2DFF016BFBD6F00289F86 /* RHTTPFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC2DFEB16BFBD6F00289F86 /* RHTTPFormDataRequest.m */; };
 		FAC2DFF116BFBD6F00289F86 /* RHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC2DFED16BFBD6F00289F86 /* RHTTPRequest.m */; };
 		FAC2DFF516BFE39F00289F86 /* RSocialSinaWeiboShare.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC2DFF416BFE39F00289F86 /* RSocialSinaWeiboShare.m */; };
+		FAC2DFF916C0B21800289F86 /* RSocialTencentWeiboShare.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC2DFF816C0B21800289F86 /* RSocialTencentWeiboShare.m */; };
 		FAD71B1B16BFB27500FE67DA /* RSocialCheckmark.png in Resources */ = {isa = PBXBuildFile; fileRef = FAD71B1916BFB27500FE67DA /* RSocialCheckmark.png */; };
 		FAD71B1C16BFB27500FE67DA /* RSocialCheckmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAD71B1A16BFB27500FE67DA /* RSocialCheckmark@2x.png */; };
 /* End PBXBuildFile section */
@@ -89,6 +90,8 @@
 		FAC2DFED16BFBD6F00289F86 /* RHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RHTTPRequest.m; sourceTree = "<group>"; };
 		FAC2DFF316BFE39F00289F86 /* RSocialSinaWeiboShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSocialSinaWeiboShare.h; sourceTree = "<group>"; };
 		FAC2DFF416BFE39F00289F86 /* RSocialSinaWeiboShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSocialSinaWeiboShare.m; sourceTree = "<group>"; };
+		FAC2DFF716C0B21800289F86 /* RSocialTencentWeiboShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSocialTencentWeiboShare.h; sourceTree = "<group>"; };
+		FAC2DFF816C0B21800289F86 /* RSocialTencentWeiboShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSocialTencentWeiboShare.m; sourceTree = "<group>"; };
 		FAD71B1916BFB27500FE67DA /* RSocialCheckmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RSocialCheckmark.png; sourceTree = "<group>"; };
 		FAD71B1A16BFB27500FE67DA /* RSocialCheckmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RSocialCheckmark@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -123,10 +126,9 @@
 			children = (
 				FA22D65816BE15AE00478FC4 /* Douban */,
 				FAC2DFF216BFE37C00289F86 /* Sina Weibo */,
+				FAC2DFF616C0B1F700289F86 /* Tencent Weibo */,
 				FA2E5ECB16A80590000D59D8 /* RSocialRenrenAuth.h */,
 				FA2E5ECC16A80590000D59D8 /* RSocialRenrenAuth.m */,
-				FA64524716A91D48005A4B39 /* RSocialTencentWeiboAuth.h */,
-				FA64524816A91D48005A4B39 /* RSocialTencentWeiboAuth.m */,
 				FA1F77B716B39AB3001510AF /* RSocialTencentQQAuth.h */,
 				FA1F77B816B39AB3001510AF /* RSocialTencentQQAuth.m */,
 			);
@@ -285,6 +287,17 @@
 			name = "Sina Weibo";
 			sourceTree = "<group>";
 		};
+		FAC2DFF616C0B1F700289F86 /* Tencent Weibo */ = {
+			isa = PBXGroup;
+			children = (
+				FA64524716A91D48005A4B39 /* RSocialTencentWeiboAuth.h */,
+				FA64524816A91D48005A4B39 /* RSocialTencentWeiboAuth.m */,
+				FAC2DFF716C0B21800289F86 /* RSocialTencentWeiboShare.h */,
+				FAC2DFF816C0B21800289F86 /* RSocialTencentWeiboShare.m */,
+			);
+			name = "Tencent Weibo";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -373,6 +386,7 @@
 				FAC2DFF016BFBD6F00289F86 /* RHTTPFormDataRequest.m in Sources */,
 				FAC2DFF116BFBD6F00289F86 /* RHTTPRequest.m in Sources */,
 				FAC2DFF516BFE39F00289F86 /* RSocialSinaWeiboShare.m in Sources */,
+				FAC2DFF916C0B21800289F86 /* RSocialTencentWeiboShare.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
