@@ -13,6 +13,8 @@
 
 @property (nonatomic, assign) dispatch_semaphore_t isDisplayingShareFormViewSem;
 
+@property (nonatomic, strong) MBProgressHUD *progressHUD;
+
 // Share flow
 - (void)promptWithShareForm;
 - (void)handleFormContent:(NSDictionary *)content;
@@ -70,20 +72,8 @@
 - (void)share
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        // Find the window on the top.
-        __block UIApplication *application = [UIApplication sharedApplication];
-        __block UIWindow *topWindow = application.keyWindow;
-        if (topWindow.windowLevel != UIWindowLevelNormal) {
-            for (UIWindow *window in application.windows) {
-                if (window.windowLevel == UIWindowLevelNormal) {
-                    topWindow = window;
-                    break;
-                }
-            }
-        }
         // Prepare progress HUD
-        __block MBProgressHUD *progressHUD = [[[MBProgressHUD alloc] initWithWindow:topWindow] autorelease];
-        [topWindow.rootViewController.view addSubview:progressHUD];
+        MBProgressHUD *progressHUD = self.progressHUD;
         progressHUD.labelText = NSLocalizedString(@"RSOCIAL_SHARE_AUTHORIZING", nil);
         [progressHUD show:YES];
         
@@ -118,7 +108,7 @@
                             }
                             
                             // Update HUD
-                            [progressHUD hide:YES afterDelay:0.3f];
+                            [progressHUD hide:YES afterDelay:0.6f];
                         });
                     }];
                 } else {
@@ -157,6 +147,21 @@
     self = [super init];
     if (self) {
         self.maxTextLength = 280;
+        
+        // Find the window on the top.
+        UIApplication *application = [UIApplication sharedApplication];
+        UIWindow *topWindow = application.keyWindow;
+        if (topWindow.windowLevel != UIWindowLevelNormal) {
+            for (UIWindow *window in application.windows) {
+                if (window.windowLevel == UIWindowLevelNormal) {
+                    topWindow = window;
+                    break;
+                }
+            }
+        }
+        MBProgressHUD *progressHUD = [[[MBProgressHUD alloc] initWithWindow:topWindow] autorelease];
+        self.progressHUD = progressHUD;
+        [topWindow.rootViewController.view addSubview:progressHUD];
     }
     return self;
 }
