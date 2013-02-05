@@ -10,6 +10,15 @@
 
 @interface RHTTPFormDataRequest : RHTTPRequest
 
++ (NSDictionary *)sendSynchronousFormDataRequestForURL:(NSURL *)url
+                                               headers:(NSDictionary *)headers
+                                           requestBody:(NSDictionary *)requestDictionary
+                                       responseHeaders:(NSDictionary **)responseHeaders;
++ (void)sendAsynchronousFormDataRequestForURL:(NSURL *)url
+                                      headers:(NSDictionary *)headers
+                                  requestBody:(NSDictionary *)requestDictionary
+                                   completion:(void (^)(NSDictionary *responseHeaders, NSDictionary *responseDictionary))completion;
+
 + (RHTTPFormDataRequest *)formDataRequestForURL:(NSURL *)requestURL
                                         headers:(NSDictionary *)headers
                                     requestBody:(NSDictionary *)requestDictionary;

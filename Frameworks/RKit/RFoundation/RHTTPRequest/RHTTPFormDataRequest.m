@@ -11,6 +11,53 @@
 
 @implementation RHTTPFormDataRequest
 
++ (NSDictionary *)sendSynchronousFormDataRequestForURL:(NSURL *)url
+                                               headers:(NSDictionary *)headers
+                                           requestBody:(NSDictionary *)requestDictionary
+                                       responseHeaders:(NSDictionary **)responseHeaders
+{
+    RHTTPFormDataRequest *request = [self formDataRequestForURL:url headers:headers requestBody:requestDictionary];
+    NSHTTPURLResponse *response = nil;
+    NSError *error = nil;
+    NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    if (error) {
+        NSLog(@"RHTTPRequest: URL connection error \n%@", error.description);
+    }
+    if (responseHeaders) {
+        *responseHeaders = response.allHeaderFields;
+    }
+    NSDictionary *responseDictionary = nil;
+    if (responseData) {
+        NSError *error = nil;
+        responseDictionary = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&error];
+        if (error) {
+            NSLog(@"RHTTPRequest: JSON parsing error \n%@", error.description);
+        }
+        if (!responseDictionary) {
+            NSString *responseString = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease];
+            responseDictionary = responseString.URLDecodedDictionary;
+        }
+    }
+    return responseDictionary;
+}
+
++ (void)sendAsynchronousFormDataRequestForURL:(NSURL *)url
+                                      headers:(NSDictionary *)headers
+                                  requestBody:(NSDictionary *)requestDictionary
+                                   completion:(void (^)(NSDictionary *, NSDictionary *))completion
+{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSDictionary *responseHeaders = nil;
+        NSDictionary *responseDictionary = [self sendSynchronousFormDataRequestForURL:url
+                                                                              headers:headers
+                                                                          requestBody:requestDictionary
+                                                                      responseHeaders:&responseHeaders];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completion(responseHeaders, responseDictionary);
+        });
+    });
+}
+
 + (RHTTPFormDataRequest *)formDataRequestForURL:(NSURL *)requestURL headers:(NSDictionary *)headers requestBody:(NSDictionary *)requestDictionary
 {
     RHTTPFormDataRequest *formDataRequest = [[[RHTTPFormDataRequest alloc] initWithURL:requestURL] autorelease];

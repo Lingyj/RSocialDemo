@@ -23,17 +23,13 @@ NSString * const HTTPMethodDELETE = @"DELETE";
                                    requestBody:(NSDictionary *)requestDictionary
                                responseHeaders:(NSDictionary **)responseHeaders
 {
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:6];
-    request.HTTPMethod = method;
-    request.allHTTPHeaderFields = headers;
-    request.HTTPBody = [[NSString stringWithURLEncodedDictionary:requestDictionary] dataUsingEncoding:NSUTF8StringEncoding];
+    RHTTPRequest *request = [self requestForURL:url method:method headers:headers requestBody:requestDictionary];
     NSHTTPURLResponse *response = nil;
     NSError *error = nil;
     NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     if (error) {
         NSLog(@"RHTTPRequest: URL connection error \n%@", error.description);
     }
-    [request release];
     if (responseHeaders) {
         *responseHeaders = response.allHeaderFields;
     }
