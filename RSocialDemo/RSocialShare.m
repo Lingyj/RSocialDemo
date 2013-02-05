@@ -93,7 +93,7 @@
                                 progressHUD.customView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"RSocialCheckmark"]] autorelease];
                                 progressHUD.labelText = NSLocalizedString(@"RSOCIAL_SHARE_SUCCESS", nil);
                                 
-                                
+                                // Use delegate
                                 if ([self.delegate respondsToSelector:@selector(socialShare:didFinishWithStatus:)]) {
                                     [self.delegate socialShare:self didFinishWithStatus:status];
                                 }
@@ -140,14 +140,9 @@
     return UIImagePNGRepresentation(self.image);
 }
 
-#pragma mark - Life cycle
-
-- (id)init
+- (MBProgressHUD *)progressHUD
 {
-    self = [super init];
-    if (self) {
-        self.maxTextLength = 280;
-        
+    if (!_progressHUD) {
         // Find the window on the top.
         UIApplication *application = [UIApplication sharedApplication];
         UIWindow *topWindow = application.keyWindow;
@@ -159,9 +154,20 @@
                 }
             }
         }
-        MBProgressHUD *progressHUD = [[[MBProgressHUD alloc] initWithWindow:topWindow] autorelease];
-        self.progressHUD = progressHUD;
-        [topWindow.rootViewController.view addSubview:progressHUD];
+        
+        _progressHUD = [[[MBProgressHUD alloc] initWithWindow:topWindow] autorelease];
+        [topWindow.rootViewController.view addSubview:_progressHUD];
+    }
+    return _progressHUD;
+}
+
+#pragma mark - Life cycle
+
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        self.maxTextLength = 280;
     }
     return self;
 }
